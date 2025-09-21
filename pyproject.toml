@@ -6,7 +6,24 @@ authors = ["AntonioGarciaGarvi <antonio.garcia.garvi@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = ">=3.12,<3.13"
+jupyter = "^1.0.0"
+pyarrow = "^17.0.0"
+tqdm = "^4.66.5"
+plotly = "^5.23.0"
+scikit-learn = "^1.5.1"
+xgboost = "^2.1.1"
+lightgbm = "^4.5.0"
+optuna = "^3.6.1"
+python-dotenv = "^1.0.1"
+
+# align hopsworks to backend 4.2.x → requires pandas <2.2.0
+pandas = "==2.1.4"
+
+# versions that play nicely with pandas 2.1.4 + Py3.12
+numpy = "==1.26.4"
+scipy = "==1.12.0"
+hopsworks = {version = "4.2.8", extras = ["python"]}
 
 
 [build-system]
