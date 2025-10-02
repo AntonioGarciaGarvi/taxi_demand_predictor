@@ -27,6 +27,7 @@ hopsworks = {version = "4.2.8", extras = ["python"]}
 streamlit = "^1.50.0"
 geopandas = "^1.1.1"
 comet-ml = "^3.53.0"
+retry = "^0.9.2"
 
 
 [build-system]
