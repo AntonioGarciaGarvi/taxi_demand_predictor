@@ -1,10 +1,10 @@
 # Ride Demand Predictor
 
-End-to-end ML pipeline for predicting NYC taxi demand using MLOps best practices.
+End-to-end ML pipeline for predicting NYC taxi demand using MLOps best practices developed as part of Real-World Machine Learning by Pau Labarta Bajo.
 
 ## Overview
 
-This project builds a production-ready machine learning service to predict hourly taxi demand across NYC locations, helping ride-sharing companies optimize driver distribution and reduce lost revenue. [1](#0-0) 
+This project builds a production-ready machine learning service to predict hourly taxi demand across NYC locations, helping ride-sharing companies optimize driver distribution and reduce lost revenue.
 
 ## Architecture
 
@@ -18,6 +18,10 @@ Trains LightGBM models using historical features with Optuna hyperparameter opti
 
 ### ⚡ Inference Pipeline
 Generates hourly predictions using the latest production model.  
+
+<p align="center">
+<img src="https://antoniogarciagarvi.github.io/images/portfolio/taxi_demand_prediction/MLsystem.png" align="center">
+</p>
 
 ## Tech Stack
 
@@ -39,9 +43,10 @@ Generates hourly predictions using the latest production model.
 
 3. **Run pipelines**
    ```bash
+   make backfill     # Populate historical data (one-time setup)
    make features     # Generate features
    make training     # Train model  
-   make inference    # Generate predictions
+   make inference    # Generate predictions for the last hour
    ```
 
 4. **Launch dashboards**
@@ -60,11 +65,32 @@ Generates hourly predictions using the latest production model.
 ## Project Structure
 
 ```
-├── scripts/           # Pipeline implementations
-├── src/              # Core modules and APIs
-├── notebooks/        # Development notebooks
-├── .github/workflows/ # CI/CD automation
-└── Makefile          # Local development commands
+├── data/                  # Data storage  
+│   ├── raw/              # Raw NYC taxi data  
+│   ├── transformed/      # Processed time-series data  
+│   └── cache/            # Cached intermediate files  
+├── models/               # Trained model artifacts  
+├── scripts/              # Pipeline implementations  
+│   ├── feature_pipeline.py  
+│   ├── training_pipeline.py  
+│   ├── inference_pipeline.py  
+│   ├── backfill_feature_group.py  
+│   └── backfill_inference.py  
+├── src/                  # Core modules and APIs  
+│   ├── config.py  
+│   ├── data.py  
+│   ├── feature_store_api.py  
+│   ├── model_registry_api.py  
+│   ├── inference.py  
+│   ├── frontend.py  
+│   └── frontend_monitoring.py  
+├── notebooks/            # Development notebooks     
+├── .github/workflows/    # CI/CD automation  
+│   ├── feature_pipeline.yaml  
+│   ├── training_pipeline.yaml  
+│   └── inference_pipeline.yaml  
+├── Makefile              # Local development commands  
+└── pyproject.toml        # Poetry dependencies  
 ```
 
 
