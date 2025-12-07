@@ -1,6 +1,6 @@
 # Ride Demand Predictor
 
-End-to-end ML pipeline for predicting NYC taxi demand using MLOps best practices developed as part of Real-World Machine Learning by Pau Labarta Bajo.
+End-to-end ML pipeline for predicting NYC taxi demand using MLOps best practices developed as part of Real-World Machine Learning course by Pau Labarta Bajo.
 
 ## Overview
 
